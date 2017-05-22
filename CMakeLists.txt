@@ -61,7 +61,7 @@ if(WIN32)
         ${LIBUVDIR}/src/win/winsock.h
         )
 
-    add_library(uv ${SOURCES})
+    add_library(uv STATIC ${SOURCES})
 	target_link_libraries(uv advapi32 iphlpapi psapi userenv shell32 ws2_32)
 else()
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g --std=gnu89 -pedantic -Wall -Wextra -Wno-unused-parameter")
@@ -178,7 +178,7 @@ else()
             )
     endif()
 
-    add_library(uv ${SOURCES})
+    add_library(uv STATIC ${SOURCES})
 
     find_library(M_LIB NAMES m)
     find_package(Threads)
